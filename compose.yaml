@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    volumes:
+      - .:/var/www
+    ports:
+      - "8000:8000"   # Expose Laravel port
+      - "5173:5173"   # Expose Vite port
+    networks:
+      - laravel
+
+  mariadb:
+    image: mariadb:11.6
+    container_name: laravel_mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - laravel
+
+  redis:
+    image: redis:7.4
+    container_name: laravel_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - laravel
+
+volumes:
+  mariadb_data:
+
+networks:
+  laravel:
