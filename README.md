@@ -65,29 +65,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## How to run
-
-- Build the laravel app docker image with run this command `docker compose build app`
-- Run all the docker with this command `docker compose up -d`
-- Run migration by run this command `docker exec -it laravel_app php artisan migrate`
-- See the logs by run this command `docker logs -t -f laravel_app`
-
 ## How to Run
 
-1. Build the laravel app docker image by running the following command:
+1. Build docker image and start all services with the following command:
    ```
-   docker compose build app
+   docker compose up -d --build
    ```
-2. Start all services with the following command:
-   ```
-   docker compose up -d
-   ```
-3. Run the migrations by executing the following command:
-   ```
-   docker exec -it laravel_app php artisan migrate
-   ```
-4. View the logs by running the following command:
+2. View the logs by running the following command:
    ```
    docker logs -t -f laravel_app
    ```
-

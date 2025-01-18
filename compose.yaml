@@ -11,6 +11,8 @@ services:
       - "5173:5173"   # Expose Vite port
     networks:
       - laravel
+    working_dir: /var/www
+    command: ["sh", "/var/www/entrypoint.sh"]
 
   mariadb:
     image: mariadb:11.6
